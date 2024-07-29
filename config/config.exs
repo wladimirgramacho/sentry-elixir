@@ -6,7 +6,7 @@ if config_env() == :test do
     tags: %{},
     enable_source_code_context: true,
     root_source_code_paths: [File.cwd!()],
-    hackney_opts: [recv_timeout: 50, pool: :sentry_pool],
+    finch_opts: [recv_timeout: 50, pool: :sentry_pool],
     send_result: :sync,
     send_max_attempts: 1,
     dedup_events: false,
@@ -14,8 +14,5 @@ if config_env() == :test do
 
   config :logger, backends: []
 end
-
-config :sentry,
-  client: Sentry.FinchClient
 
 config :phoenix, :json_library, Jason
