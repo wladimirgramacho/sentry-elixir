@@ -15,4 +15,7 @@ if config_env() == :test do
   config :logger, backends: []
 end
 
+config :sentry,
+  client: Sentry.FinchClient
+
 config :phoenix, :json_library, Jason
