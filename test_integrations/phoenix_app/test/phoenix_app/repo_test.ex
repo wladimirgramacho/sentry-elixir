@@ -20,8 +20,9 @@ defmodule PhoenixApp.RepoTest do
 
     assert [transaction] = transactions
 
-    assert transaction.transaction_info == %{source: "db"}
+    assert transaction.transaction_info == %{source: "component"}
     assert transaction.contexts.trace.op == "db.sql.ecto"
+    assert String.starts_with?(transaction.contexts.trace.description, "SELECT")
     assert transaction.contexts.trace.data["db.system"] == :sqlite
   end
 end
